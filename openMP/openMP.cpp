@@ -109,7 +109,8 @@ int main() {
 	std::cout << "\n";
 	std::cout << "Time taken for prefix sum using OpenMP: " << (end_time_prefix - start_time_prefix) << " seconds\n";
     
-	
+	benchmark_serial_matmul(512, 512, 512);
+	benchmark_serial_prefix_sum(1 << 20); // 1 million elements
 	benchmark_matmul(512, 512, 512);
 	benchmark_prefix_sum(1 << 20); // 1 million elements
 	return 0;

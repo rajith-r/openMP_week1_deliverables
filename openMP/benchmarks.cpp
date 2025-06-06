@@ -79,8 +79,63 @@ void benchmark_prefix_sum(int size) {
         prefix_sum_omp(input, output, size);
         auto end = high_resolution_clock::now();
 
+		//cout << "\n serial last sum: " << output[size - 1] << "\n";
         cout << "prefix_sum_omp (" << size << ") with " << threads
             << " threads: " << duration_cast<milliseconds>(end - start).count() << " ms\n";
     }
 }
 
+//benchmark for matmul 128 128 128
+//-- - Threads: 4 -- -
+//matmul_omp : 2 ms
+//matmul_omp_simd : 1 ms
+//
+//-- - Threads : 5 -- -
+//matmul_omp : 2 ms
+//matmul_omp_simd : 1 ms
+//
+//-- - Threads : 6 -- -
+//matmul_omp : 2 ms
+//matmul_omp_simd : 0 ms
+//
+//-- - Threads : 7 -- -
+//matmul_omp : 2 ms
+//matmul_omp_simd : 0 ms
+//
+//-- - Threads : 8 -- -
+//matmul_omp : 3 ms
+//matmul_omp_simd : 0 ms
+
+//benchmark for prefix sum 
+//prefix_sum_omp(1048576) with 4 threads: 6 ms
+//prefix_sum_omp(1048576) with 5 threads : 7 ms
+//prefix_sum_omp(1048576) with 6 threads : 5 ms
+//prefix_sum_omp(1048576) with 7 threads : 5 ms
+//prefix_sum_omp(1048576) with 8 threads : 6 ms
+
+
+//512 512 512
+//-- - Threads: 4 -- -
+//matmul_omp : 94 ms
+//matmul_omp_simd : 93 ms
+//
+//-- - Threads : 5 -- -
+//matmul_omp : 80 ms
+//matmul_omp_simd : 86 ms
+//
+//-- - Threads : 6 -- -
+//matmul_omp : 78 ms
+//matmul_omp_simd : 67 ms
+//
+//-- - Threads : 7 -- -
+//matmul_omp : 64 ms
+//matmul_omp_simd : 59 ms
+//
+//-- - Threads : 8 -- -
+//matmul_omp : 53 ms
+//matmul_omp_simd : 52 ms
+//prefix_sum_omp(1048576) with 4 threads : 6 ms
+//prefix_sum_omp(1048576) with 5 threads : 5 ms
+//prefix_sum_omp(1048576) with 6 threads : 6 ms
+//prefix_sum_omp(1048576) with 7 threads : 4 ms
+//prefix_sum_omp(1048576) with 8 threads : 6 ms
